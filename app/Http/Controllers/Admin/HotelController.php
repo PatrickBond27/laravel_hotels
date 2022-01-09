@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+// It takes and uses the functions and the files that it takes from.
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 use Hash;
 
+// This controller holds all the main functions that provides to the user which in this case it is the admin. 
+// These functions have routes that were added in the web.php file.
 class HotelController extends Controller
 {
     public function __construct()
@@ -19,6 +22,7 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // The index function views the hotels.
     public function index()
     {
         $hotels = Hotel::all();
@@ -44,10 +48,12 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // The store function stores the hotels that are created and saves it in the database.
+    // It validates the input that is required for creating and storing the hotel in the database.
     public function store(Request $request)
     {
         // when user clicks submit on the create view above
-        // the festival will be stored in the DB
+        // the hotel will be stored in the DB
         $request->validate([
             //    'image_name' => 'mimes:jpeg,bmp,png',
                 'name' => 'required',
@@ -55,6 +61,7 @@ class HotelController extends Controller
                 'hotel_image' => 'file|image'
             ]);
     
+            // This requests the file for the image input.
             $hotel_image = $request->file('hotel_image');
             $filename = $hotel_image->hashName();
     
@@ -69,8 +76,6 @@ class HotelController extends Controller
             $hotel->image_location = $filename;
             $hotel->save();
     
-    
-    
             return redirect()->route('admin.hotels.index');
     }
 
@@ -80,6 +85,7 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // The show function views each hotel in detail.
     public function show($id)
     {
         $hotel = Hotel::findOrFail($id);
@@ -95,6 +101,7 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // The edit function edits the hotel like the name or address.
     public function edit($id)
     {
         // get the hotel by ID from the Database
@@ -114,16 +121,17 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // The update function requests the id and updates the existing hotel and saves it in the database.
     public function update(Request $request, $id)
     {
-        // first get the existing festival that the user is update
+        // first get the existing hotel that the user is update
         $hotel = Hotel::findOrFail($id);
         $request->validate([
             'name' => 'required',
             'address' =>'required|max:500'
         ]);
 
-        // if validation passes then update existing festival
+        // if validation passes then update existing hotel
         $hotel->name = $request->input('name');
         $hotel->address = $request->input('address');
         $hotel->star_rating = $request->input('star_rating');
@@ -139,6 +147,7 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // The destroy function deletes the hotel from the database.
     public function destroy($id)
     {
         $hotel = Hotel::findOrFail($id);

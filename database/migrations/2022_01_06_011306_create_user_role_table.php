@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// This class migrates or in other words adds the entities for the user_role table.
+// At the same time it takes the user_id and the role_id as foreign keys and connects it to the user_role table.
 class CreateUserRoleTable extends Migration
 {
     /**

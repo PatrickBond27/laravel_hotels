@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+// The register controller uses these files and functions below including the User and Role files from the Models folder that validates when the user registers.
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;

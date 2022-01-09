@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+// This authenticates and verifies the user with role, email, and password.
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;

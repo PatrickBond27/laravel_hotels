@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 
+// This main controller has functions that provides to the user.
+// In this case the user has a 'user' and it provides with the index function and show function.
 class HotelController extends Controller
 {
     /**
@@ -13,6 +15,7 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // The index function shows all the hotels that are in the database.
     public function index()
     {
         $hotels = Hotel::all();
@@ -49,6 +52,7 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // The show function views the hotels separately.
     public function show($id)
     {
         $hotel = Hotel::findOrFail($id);

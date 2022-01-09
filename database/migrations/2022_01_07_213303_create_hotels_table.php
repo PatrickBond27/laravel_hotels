@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// This class migrates or in other words adds and implements the entities for the hotels table in the database.
 class CreateHotelsTable extends Migration
 {
     /**

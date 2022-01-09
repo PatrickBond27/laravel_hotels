@@ -14,6 +14,7 @@
                         </div>
                     @endif
 
+                    <!-- This is the home page for the ordinary user -->
                     You are logged in as an Ordinary user! <a href="{{ route('user.hotels.index')}}"> View All Hotels</a>
                 </div>
             </div>

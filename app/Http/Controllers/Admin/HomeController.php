@@ -24,6 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // This index function authorizes the user and the role that the user has.
     public function index() {
         $user = Auth::user();
 
